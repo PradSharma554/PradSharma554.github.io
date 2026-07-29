@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Pradyuman Sharma</title>
+  <meta name="description" content="Projects by Pradyuman Sharma: CloudAIr (an access layer between websites and AI agents with llms.txt generation, MCP endpoints, rate limiting and analytics), plus MERN and blockchain work.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="/">Pradyuman Sharma</a>
+        <a href="/">Home</a>
+        <a href="/projects.html" class="active">Projects</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h1>Projects</h1>
+
+      <h2>CloudAIr</h2>
+      <div class="card">
+        <h3>The access layer between websites and AI agents</h3>
+        <p>
+          A site owner registers their domain, proves ownership via DNS TXT or
+          a well-known file, and CloudAIr becomes the interface AI agents use
+          to read the site.
+        </p>
+        <ul class="plain">
+          <li><strong>Crawler:</strong> robots.txt-compliant BFS with per-page
+            Postgres checkpoints — crawls survive free-tier instance spin-downs
+            and resume from the exact page where they died.</li>
+          <li><strong>llms.txt generation:</strong> Gemini writes per-page
+            summaries and section structure, throttled to free-tier quota,
+            cached by content hash, with a deterministic non-LLM fallback so
+            generation never fails.</li>
+          <li><strong>MCP endpoint per site:</strong> stateless Streamable HTTP
+            servers (official TypeScript SDK) exposing search_site, get_page
+            and list_pages over Postgres full-text search.</li>
+          <li><strong>Agent identification:</strong> ~30 known AI crawlers
+            (GPTBot, ClaudeBot, PerplexityBot…) recognized from a maintainable
+            signature table; MCP clients identified from their handshake.</li>
+          <li><strong>Rate limiting:</strong> hand-rolled token buckets per
+            (site, agent) with owner-configurable rules and correct Retry-After
+            semantics.</li>
+          <li><strong>Analytics:</strong> non-blocking buffered event pipeline,
+            batch inserts, daily rollups with 30-day raw retention.</li>
+          <li><strong>x402 paywall stub:</strong> HTTP 402 responses in the
+            emerging agent-micropayments format, ready for a real facilitator.</li>
+        </ul>
+        <p>
+          Stack: TypeScript, Express, Next.js 15, Auth.js, PostgreSQL (Neon),
+          Gemini, deployed on Render + Vercel free tiers with GitHub Actions
+          as the cron layer. Total infrastructure cost: $0.
+        </p>
+        <div class="links">
+          <a class="inline" href="https://github.com/PradSharma554/CloudAIr">github.com/PradSharma554/CloudAIr</a>
+        </div>
+      </div>
+
+      <h2>Other work</h2>
+      <div class="card">
+        <h3>Cloud tooling at Zopdev</h3>
+        <p>
+          Day job: building developer-facing cloud infrastructure tooling with
+          Next.js and TypeScript at Zopdev.
+        </p>
+      </div>
+      <div class="card">
+        <h3>MERN &amp; blockchain projects</h3>
+        <p>
+          Earlier work spans MERN-stack applications and blockchain
+          development — smart-contract integrations and dApp frontends. See
+          GitHub for repositories.
+        </p>
+        <div class="links">
+          <a class="inline" href="https://github.com/PradSharma554">github.com/PradSharma554</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © Pradyuman Sharma ·
+      <a class="inline" href="https://github.com/PradSharma554">GitHub</a> ·
+      <a class="inline" href="https://linkedin.com/in/pradyuman-5-sharma">LinkedIn</a>
+    </div>
+  </footer>
+</body>
+</html>
